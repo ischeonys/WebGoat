@@ -1,15 +1,18 @@
-version: 0.0
+version: 0.0  
 os: linux
 files:
-  - source: /
-    destination: /home/ec2-user/build/
-permissions:
-  - object: /
-    pattern: "**"
+  - source: target/webgoat-2023.9-SNAPSHOT.jar  
+    destination: /home/ec2-user/build/  
+    overwrite: yes
+
+permissions: 
+  - object: /home/ec2-user/build/webgoat-2023.9-SNAPSHOT.jar  
     owner: ec2-user
     group: ec2-user
+    mode: 755
+    
 hooks:
-  AfterInstall:
-    - location: src/start.sh
+  AfterInstall:  
+    - location: src/start.sh  
       timeout: 60
       runas: ec2-user
