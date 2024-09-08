@@ -1,12 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: src/start.sh  # GitHub에서 src 디렉토리의 start.sh 파일 복사
-    destination: /home/ubuntu/build/src/  # EC2 인스턴스의 해당 경로로 복사
+  - source: /
+    destination: /home/ubuntu/build/src/ 
     overwrite: yes
 
 permissions:
-  - object: /home/ubuntu/build/src/start.sh  # 복사된 파일에 대한 권한 설정
+  - object: /
     owner: ubuntu
     group: ubuntu
     mode: 755
