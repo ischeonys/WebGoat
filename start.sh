@@ -9,7 +9,7 @@
 # cp $BUILD_JAR $DEPLOY_PATH
 
 # echo "> 현재 실행중인 애플리케이션 pid 확인" >> /home/ubuntu/deploy.log
-# CURRENT_PID=$(pgrep -f $JAR_NAME)
+# CURRENT_PID=$(pgrep -f $JARFILE)
 
 # if [ -z $CURRENT_PID ]
 # then
@@ -28,9 +28,9 @@
 JARFILE=$(ls /home/ubuntu/build/target/*.jar)
 echo "filename : $JARFILE" >> startsh.log
 
-CURRENT_PID=$(pgrep -f $JAR_NAME)
+CURRENT_PID=$(pgrep -f $JARFILE)
 echo "currentpid : $CURRENT_PID" >> startsh.log
 kill -9 $CURRENT_PID 2>/dev/null
-sleeop 5
+sleep 5
 
 nohup java -jar $JARFILE > /dev/null 2> /dev/null < /dev/null &
